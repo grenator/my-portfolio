@@ -1,0 +1,44 @@
+.App {
+  min-height: 100vh;
+}
+
+.link-blue {
+  color: #2f6fed;
+  text-decoration: none;
+}
+.link-blue:hover {
+  text-decoration: underline;
+}
+
+/* nav pill hover */
+.nav-pill {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.nav-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.social-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.social-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+.project-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
