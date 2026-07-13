@@ -15,7 +15,7 @@ export default function Home() {
           {profile.available && (
             <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-neutral-700 mb-6">
               <Circle size={8} className="fill-green-500 text-green-500" />
-              Available for new projects
+              Currently learning Godot
             </span>
           )}
           <h1 className="font-display text-5xl sm:text-6xl font-semibold leading-[1.05] tracking-tight text-neutral-900">

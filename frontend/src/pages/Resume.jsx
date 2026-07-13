@@ -1,6 +1,6 @@
 import React from "react";
 import { education, experience, skills } from "../mock";
-import { GraduationCap, Briefcase, Sparkles, Download } from "lucide-react";
+import { GraduationCap, Route, Sparkles, Github } from "lucide-react";
 
 function TimelineItem({ title, subtitle, date, points, last }) {
   return (
@@ -42,14 +42,14 @@ export default function Resume() {
             A snapshot of my background, experience, and the tools I love working with.
           </p>
         </div>
-        <button className="btn-press inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold rounded-xl px-5 py-3 hover:bg-neutral-800">
-          <Download size={18} /> Download PDF
-        </button>
+        <a href="https://github.com/grenator" target="_blank" rel="noopener noreferrer" className="btn-press inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold rounded-xl px-5 py-3 hover:bg-neutral-800">
+          <Github size={18} /> View GitHub
+        </a>
       </header>
 
       <div className="grid lg:grid-cols-2 gap-6 mt-6">
         <section className="reveal glass rounded-2xl p-8" style={{ animationDelay: "60ms" }}>
-          <SectionHead icon={Briefcase} title="Experience" />
+          <SectionHead icon={Route} title="My Journey" />
           <div className="space-y-6">
             {experience.map((e, i) => (
               <TimelineItem key={i} title={e.role} subtitle={e.org} date={e.date} points={e.points} last={i === experience.length - 1} />
