@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { getTechLogo } from "../lib/logos";
 
 function initials(title) {
   const words = title.replace(/\(.*?\)/g, "").trim().split(" ").filter(Boolean);
@@ -15,10 +16,18 @@ export default function ProjectCard({ project, index = 0 }) {
     >
       <div className="flex items-start justify-between gap-4">
         <div
-          className="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg font-display"
-          style={{ backgroundColor: project.color }}
+          className="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden"
+          style={
+            project.logo
+              ? { backgroundColor: "#fff", border: "1px solid #e2e5e2" }
+              : { backgroundColor: project.color }
+          }
         >
-          {initials(project.title)}
+          {project.logo ? (
+            <img src={project.logo} alt={`${project.title} logo`} className="w-9 h-9 object-contain" />
+          ) : (
+            <span className="text-white font-bold text-lg font-display">{initials(project.title)}</span>
+          )}
         </div>
         <span className="text-xs font-medium text-neutral-500 pt-1">{project.date}</span>
       </div>
@@ -33,7 +42,8 @@ export default function ProjectCard({ project, index = 0 }) {
       {project.tech.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {project.tech.map((t) => (
-            <span key={t} className="text-xs font-medium bg-neutral-100 text-neutral-700 rounded-lg px-2.5 py-1">
+            <span key={t} className="inline-flex items-center gap-1.5 text-xs font-medium bg-neutral-100 text-neutral-700 rounded-lg px-2.5 py-1">
+              {getTechLogo(t) && <img src={getTechLogo(t)} alt="" className="w-3.5 h-3.5 object-contain" />}
               {t}
             </span>
           ))}

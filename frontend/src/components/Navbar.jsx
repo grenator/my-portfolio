@@ -20,15 +20,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const initials = profile.name.split(" ").map((w) => w[0]).join("");
-
   return (
     <div className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4">
       <nav className={`glass rounded-2xl w-full max-w-5xl flex items-center justify-between px-3 sm:px-4 py-2.5 transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}>
         <Link to="/" className="flex items-center gap-2.5 group pl-1">
-          <span className="gradient-ring w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm font-display group-hover:scale-105 transition-transform">
-            {initials}
-          </span>
+          <img src={profile.avatar} alt={profile.name} className="w-9 h-9 rounded-xl object-contain bg-white border border-neutral-200 p-0.5 group-hover:scale-105 transition-transform" />
           <span className="font-display font-semibold text-neutral-900 hidden sm:block">{profile.name}</span>
         </Link>
 

@@ -22,7 +22,7 @@ export default function Projects() {
         <p className="flex items-center gap-2 text-sm font-medium accent-blue"><Layers size={16} /> Portfolio</p>
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mt-1">Things I've built</h1>
         <p className="text-lg text-neutral-600 mt-3 max-w-2xl">
-          The start of my portfolio. Right now it's my first Godot game \u2014 with plenty more on the way as I keep learning.
+          The start of my portfolio. Right now it's my first Godot game — with plenty more on the way as I keep learning.
         </p>
       </header>
 

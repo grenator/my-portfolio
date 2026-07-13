@@ -1,5 +1,6 @@
 import React from "react";
 import { education, experience, skills } from "../mock";
+import { getTechLogo } from "../lib/logos";
 import { GraduationCap, Route, Sparkles, Github } from "lucide-react";
 
 function TimelineItem({ title, subtitle, date, points, last }) {
@@ -77,7 +78,10 @@ export default function Resume() {
                   {s.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
                       {s.tags.map((t) => (
-                        <span key={t} className="text-xs font-medium bg-neutral-100 text-neutral-700 rounded-lg px-2.5 py-1">{t}</span>
+                        <span key={t} className="inline-flex items-center gap-1.5 text-xs font-medium bg-neutral-100 text-neutral-700 rounded-lg px-2.5 py-1">
+                          {getTechLogo(t) && <img src={getTechLogo(t)} alt="" className="w-3.5 h-3.5 object-contain" />}
+                          {t}
+                        </span>
                       ))}
                     </div>
                   )}

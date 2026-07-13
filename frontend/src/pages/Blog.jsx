@@ -19,7 +19,7 @@ export default function Blog() {
       <header className="reveal">
         <p className="flex items-center gap-2 text-sm font-medium accent-blue"><PenLine size={16} /> Writing</p>
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mt-1">The Blog</h1>
-        <p className="text-lg text-neutral-600 mt-3 max-w-2xl">Notes on what I'm learning and building along the way \u2014 currently all about game development.</p>
+        <p className="text-lg text-neutral-600 mt-3 max-w-2xl">Notes on what I'm learning and building along the way — currently all about game development.</p>
       </header>
 
       {featured && (
