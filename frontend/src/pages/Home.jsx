@@ -41,8 +41,8 @@ export default function Home() {
 
         {/* profile card */}
         <div className="glass rounded-2xl p-8 flex flex-col items-center text-center card-hover">
-          <div className="w-28 h-28 rounded-2xl flex items-center justify-center bg-white border border-neutral-200 p-3">
-            <img src={profile.avatar} alt={profile.name} className="w-full h-full object-contain" />
+          <div className="w-28 h-28 rounded-2xl overflow-hidden flex items-center justify-center">
+            <img src={profile.avatar} alt={profile.name} className="w-full h-full object-contain scale-[1.7]" />
           </div>
           <h2 className="font-display text-xl font-semibold text-neutral-900 mt-5">{profile.name}</h2>
           <p className="text-sm text-neutral-500 mt-1">{profile.role}</p>

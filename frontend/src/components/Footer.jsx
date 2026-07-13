@@ -14,7 +14,9 @@ export default function Footer() {
     <footer className="max-w-5xl mx-auto px-5 pb-10">
       <div className="glass rounded-3xl px-6 sm:px-10 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <img src={profile.avatar} alt={profile.name} className="w-10 h-10 rounded-xl object-contain bg-white border border-neutral-200 p-0.5" />
+          <span className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+            <img src={profile.avatar} alt={profile.name} className="w-full h-full object-contain scale-[1.6]" />
+          </span>
           <div>
             <p className="font-display font-semibold text-neutral-900 leading-tight">{profile.name}</p>
             <p className="text-xs text-neutral-500">{profile.role}</p>
