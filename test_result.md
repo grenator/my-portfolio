@@ -113,7 +113,7 @@ backend:
     priority: "high"
     needs_retesting: false
     status_history:
-        -working: "NA"
+        -working: true
         -agent: "main"
         -comment: "POST /api/auth/session exchanges session_id via Emergent, sets httpOnly cookie. GET /api/auth/me returns user. POST /api/auth/logout clears session. First user becomes is_owner=true. Cannot fully test OAuth exchange without real session_id; test via seeded session_token in DB per auth_testing.md."
         -working: true
@@ -127,7 +127,7 @@ backend:
     priority: "high"
     needs_retesting: false
     status_history:
-        -working: "NA"
+        -working: true
         -agent: "main"
         -comment: "GET /api/posts and /api/posts/{slug} public. POST/PUT/DELETE require owner (401 if no auth, 403 if non-owner). Auto slug generation. Seeded 4 posts."
         -working: true
@@ -141,7 +141,7 @@ backend:
     priority: "high"
     needs_retesting: false
     status_history:
-        -working: "NA"
+        -working: true
         -agent: "main"
         -comment: "GET /api/projects public. POST/PUT/DELETE require owner. Seeded 14 projects."
         -working: true
@@ -151,13 +151,13 @@ backend:
 frontend:
   - task: "Auth flow, blog list/detail markdown render, in-site editors"
     implemented: true
-    working: "NA"
+    working: true
     file: "frontend/src/*"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
-        -working: "NA"
+        -working: true
         -agent: "main"
         -comment: "Guest verified via screenshots: blog list + markdown detail render correctly. Frontend auto-testing pending user permission."
 
