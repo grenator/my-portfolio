@@ -6,7 +6,7 @@ import { GraduationCap, Route, Sparkles, Github } from "lucide-react";
 function TimelineItem({ title, subtitle, date, points, last }) {
   return (
     <div className="relative pl-8">
-      <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-neutral-900 ring-4 ring-white" />
+      <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-neutral-900 ring-4 ring-[#1e1e1e]" />
       {!last && <span className="absolute left-[6px] top-6 bottom-[-1.25rem] w-0.5 bg-neutral-200" />}
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
         <h3 className="font-display text-lg font-semibold text-neutral-900">{title}</h3>

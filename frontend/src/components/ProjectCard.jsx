@@ -19,7 +19,7 @@ export default function ProjectCard({ project, index = 0 }) {
           className="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden"
           style={
             project.logo
-              ? { backgroundColor: "#fff", border: "1px solid #e2e5e2" }
+              ? { backgroundColor: "#262626", border: "1px solid #333" }
               : { backgroundColor: project.color }
           }
         >

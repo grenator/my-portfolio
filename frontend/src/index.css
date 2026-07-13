@@ -9,33 +9,33 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #d6d9d6;
-    color: #1a1a1a;
+    background-color: #121212;
+    color: #E0E0E0;
 }
 
 code { font-family: 'JetBrains Mono', source-code-pro, Menlo, monospace; }
 
 @layer base {
   :root {
-        --background: 120 4% 84%;
-        --foreground: 0 0% 10%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 10%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 10%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 40%;
-        --accent: 217 78% 53%;
+        --background: 0 0% 7%;
+        --foreground: 0 0% 88%;
+        --card: 0 0% 12%;
+        --card-foreground: 0 0% 88%;
+        --popover: 0 0% 12%;
+        --popover-foreground: 0 0% 88%;
+        --primary: 217 100% 65%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 16%;
+        --secondary-foreground: 0 0% 88%;
+        --muted: 0 0% 16%;
+        --muted-foreground: 0 0% 60%;
+        --accent: 217 100% 65%;
         --accent-foreground: 0 0% 100%;
         --destructive: 4 74% 56%;
         --destructive-foreground: 0 0% 98%;
-        --border: 120 4% 82%;
-        --input: 120 4% 82%;
-        --ring: 217 78% 53%;
+        --border: 0 0% 18%;
+        --input: 0 0% 18%;
+        --ring: 217 100% 65%;
         --radius: 0.75rem;
     }
 }
@@ -44,23 +44,48 @@ code { font-family: 'JetBrains Mono', source-code-pro, Menlo, monospace; }
   * { @apply border-border; }
 }
 
-/* Inter for headings too, matching meorge's clean sans look */
 .font-display { font-family: 'Inter', sans-serif; letter-spacing: -0.015em; }
 
-/* Flat white cards (meorge style) — replaces old glass utilities */
+/* Dark surface cards (#1E1E1E) */
 .glass {
-  background: #ffffff;
-  border: 1px solid #e2e5e2;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 .glass-strong {
-  background: #ffffff;
-  border: 1px solid #e2e5e2;
-  box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.25);
+  background: #1e1e1e;
+  border: 1px solid #303030;
+  box-shadow: 0 12px 34px -12px rgba(0, 0, 0, 0.7);
 }
 
-/* Solid blue accent (no gradients) */
-.gradient-text { color: #2f6fe0; }
-.gradient-ring { background: #141414; }
+/* Accent blue (readable on dark) */
+.gradient-text { color: #5b9bff; }
+.accent-blue { color: #5b9bff; }
+.gradient-ring { background: #2f6fe0; }
 
-.accent-blue { color: #2f6fe0; }
+/* ---------------------------------------------------------------
+   Dark-theme overrides for Tailwind neutral utilities.
+   These rules are UNLAYERED, so they win over Tailwind's
+   `@layer utilities` without needing !important.
+   --------------------------------------------------------------- */
+.bg-white { background-color: #1e1e1e; }
+.bg-neutral-50 { background-color: #1e1e1e; }
+.bg-neutral-100 { background-color: #262626; }
+.bg-neutral-200 { background-color: #303030; }
+.hover\:bg-neutral-100:hover { background-color: #262626; }
+.hover\:bg-neutral-200:hover { background-color: #303030; }
+.hover\:bg-white:hover { background-color: #262626; }
+
+/* Primary buttons / active pills -> accent blue on dark */
+.bg-neutral-900 { background-color: #2f6fe0; }
+.hover\:bg-neutral-800:hover { background-color: #2b63c9; }
+
+.text-neutral-900 { color: #f2f2f2; }
+.text-neutral-800 { color: #e0e0e0; }
+.text-neutral-700 { color: #cccccc; }
+.text-neutral-600 { color: #a8a8a8; }
+.text-neutral-500 { color: #8a8a8a; }
+.text-neutral-400 { color: #6a6a6a; }
+
+.border-neutral-200 { border-color: #2e2e2e; }
+.border-neutral-300 { border-color: #3a3a3a; }
