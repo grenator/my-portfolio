@@ -2,42 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
     margin: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #eef1f7;
-    color: #101322;
-    overflow-x: hidden;
+    background-color: #d6d9d6;
+    color: #1a1a1a;
 }
 
 code { font-family: 'JetBrains Mono', source-code-pro, Menlo, monospace; }
 
 @layer base {
   :root {
-        --background: 222 30% 96%;
-        --foreground: 230 40% 10%;
+        --background: 120 4% 84%;
+        --foreground: 0 0% 10%;
         --card: 0 0% 100%;
-        --card-foreground: 230 40% 10%;
+        --card-foreground: 0 0% 10%;
         --popover: 0 0% 100%;
-        --popover-foreground: 230 40% 10%;
-        --primary: 222 83% 62%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 220 20% 94%;
-        --secondary-foreground: 230 40% 10%;
-        --muted: 220 20% 94%;
-        --muted-foreground: 225 12% 42%;
-        --accent: 270 88% 65%;
+        --popover-foreground: 0 0% 10%;
+        --primary: 0 0% 9%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 40%;
+        --accent: 217 78% 53%;
         --accent-foreground: 0 0% 100%;
         --destructive: 4 74% 56%;
         --destructive-foreground: 0 0% 98%;
-        --border: 225 25% 88%;
-        --input: 225 25% 88%;
-        --ring: 222 83% 62%;
-        --radius: 1rem;
+        --border: 120 4% 82%;
+        --input: 120 4% 82%;
+        --ring: 217 78% 53%;
+        --radius: 0.75rem;
     }
 }
 
@@ -45,33 +44,23 @@ code { font-family: 'JetBrains Mono', source-code-pro, Menlo, monospace; }
   * { @apply border-border; }
 }
 
-.font-display { font-family: 'Space Grotesk', sans-serif; }
+/* Inter for headings too, matching meorge's clean sans look */
+.font-display { font-family: 'Inter', sans-serif; letter-spacing: -0.015em; }
 
-/* Glassmorphism */
+/* Flat white cards (meorge style) — replaces old glass utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 10px 40px -12px rgba(30, 41, 90, 0.22);
+  background: #ffffff;
+  border: 1px solid #e2e5e2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
 .glass-strong {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 30px -10px rgba(30, 41, 90, 0.2);
+  background: #ffffff;
+  border: 1px solid #e2e5e2;
+  box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.25);
 }
 
-.gradient-text {
-  background: linear-gradient(100deg, #4a86f0 0%, #a855f7 48%, #0a95d9 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
+/* Solid blue accent (no gradients) */
+.gradient-text { color: #2f6fe0; }
+.gradient-ring { background: #141414; }
 
-.gradient-ring {
-  background: linear-gradient(135deg, #4a86f0, #a855f7 55%, #0a95d9);
-}
+.accent-blue { color: #2f6fe0; }

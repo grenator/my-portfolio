@@ -13,13 +13,13 @@ export default function Home() {
       <section className="reveal grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
         <div>
           {profile.available && (
-            <span className="glass-strong inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-neutral-700 mb-6">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-neutral-700 mb-6">
               <Circle size={8} className="fill-green-500 text-green-500" />
               Available for new projects
             </span>
           )}
-          <h1 className="font-display text-5xl sm:text-6xl font-bold leading-[1.05] tracking-tight text-neutral-900">
-            Hey, I'm <span className="gradient-text">{profile.first}</span>.
+          <h1 className="font-display text-5xl sm:text-6xl font-semibold leading-[1.05] tracking-tight text-neutral-900">
+            Hey, I'm <span className="accent-blue">{profile.first}</span>.
           </h1>
           <p className="font-display text-2xl sm:text-3xl font-medium text-neutral-500 mt-2">
             {profile.role}
@@ -28,10 +28,10 @@ export default function Home() {
             {profile.tagline}
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
-            <Link to="/projects" className="btn-press gradient-ring inline-flex items-center gap-2 text-white font-semibold rounded-2xl px-6 py-3 shadow-lg">
+            <Link to="/projects" className="btn-press inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold rounded-xl px-6 py-3 hover:bg-neutral-800">
               View my work <ArrowRight size={18} />
             </Link>
-            <Link to="/resume" className="btn-press glass-strong inline-flex items-center gap-2 text-neutral-800 font-semibold rounded-2xl px-6 py-3">
+            <Link to="/resume" className="btn-press glass inline-flex items-center gap-2 text-neutral-800 font-semibold rounded-xl px-6 py-3">
               {"R\u00e9sum\u00e9"}
             </Link>
           </div>
@@ -40,17 +40,17 @@ export default function Home() {
           </p>
         </div>
 
-        {/* profile glass card */}
-        <div className="glass rounded-[2rem] p-8 flex flex-col items-center text-center card-hover">
-          <div className="gradient-ring w-28 h-28 rounded-3xl flex items-center justify-center text-white text-4xl font-bold font-display shadow-xl">
+        {/* profile card */}
+        <div className="glass rounded-2xl p-8 flex flex-col items-center text-center card-hover">
+          <div className="gradient-ring w-28 h-28 rounded-2xl flex items-center justify-center text-white text-4xl font-bold font-display">
             {initials}
           </div>
           <h2 className="font-display text-xl font-semibold text-neutral-900 mt-5">{profile.name}</h2>
           <p className="text-sm text-neutral-500 mt-1">{profile.role}</p>
           <div className="grid grid-cols-2 gap-3 w-full mt-6">
             {profile.stats.map((s) => (
-              <div key={s.label} className="bg-white/50 border border-white/70 rounded-2xl py-3">
-                <p className="font-display text-2xl font-bold gradient-text">{s.value}</p>
+              <div key={s.label} className="bg-neutral-50 border border-neutral-200 rounded-xl py-3">
+                <p className="font-display text-2xl font-bold accent-blue">{s.value}</p>
                 <p className="text-xs text-neutral-500 mt-0.5">{s.label}</p>
               </div>
             ))}
@@ -59,13 +59,13 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="reveal glass rounded-3xl p-8 sm:p-10 mt-8" style={{ animationDelay: "120ms" }}>
+      <section className="reveal glass rounded-2xl p-8 sm:p-10 mt-8" style={{ animationDelay: "120ms" }}>
         <p className="text-lg text-neutral-800 leading-relaxed">{profile.intro}</p>
         <div className="mt-4 space-y-4">
           {profile.paragraphs.map((p, i) => (
             <p key={i} className="text-neutral-600 leading-relaxed">
               {p.text}
-              {p.link && <Link to={p.link.to} className="link-anim font-medium text-neutral-900">{p.link.text}</Link>}
+              {p.link && <Link to={p.link.to} className="link-anim font-medium accent-blue">{p.link.text}</Link>}
               {p.after}
             </p>
           ))}
@@ -76,7 +76,7 @@ export default function Home() {
       <section className="mt-16">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="flex items-center gap-2 text-sm font-medium gradient-text"><Sparkles size={16} /> Selected work</p>
+            <p className="flex items-center gap-2 text-sm font-medium accent-blue"><Sparkles size={16} /> Selected work</p>
             <h2 className="font-display text-3xl font-bold text-neutral-900 mt-1">Featured Projects</h2>
           </div>
           <Link to="/projects" className="link-anim text-sm font-medium text-neutral-700 hidden sm:inline-flex items-center gap-1">
@@ -101,11 +101,11 @@ export default function Home() {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-hover reveal rounded-3xl p-5 text-white no-underline relative overflow-hidden"
-              style={{ background: `linear-gradient(135deg, ${s.color}, ${s.color}dd)`, animationDelay: `${i * 60}ms` }}
+              className="card-hover reveal rounded-2xl p-5 text-white no-underline"
+              style={{ backgroundColor: s.color, animationDelay: `${i * 60}ms` }}
             >
               <div className="flex items-start gap-4">
-                <div className="shrink-0 bg-white/15 rounded-2xl p-2.5">
+                <div className="shrink-0 bg-white/15 rounded-xl p-2.5">
                   <SocialIcon name={s.icon} size={26} />
                 </div>
                 <div>

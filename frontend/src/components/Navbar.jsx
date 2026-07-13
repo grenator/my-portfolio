@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home as HomeIcon, Layers, PenLine, FileText, LogIn, LogOut } from "lucide-react";
+import { Home as HomeIcon, Layers, PenLine, FileText } from "lucide-react";
 import { profile } from "../mock";
-import { useAuth } from "../context/AuthContext";
 
 const items = [
   { to: "/", label: "Home", icon: HomeIcon },
@@ -13,7 +12,6 @@ const items = [
 
 export default function Navbar() {
   const { pathname } = useLocation();
-  const { user, login, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,9 +24,9 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4">
-      <nav className={`glass rounded-2xl w-full max-w-5xl flex items-center justify-between px-3 sm:px-4 py-2.5 transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}>
+      <nav className={`glass rounded-2xl w-full max-w-5xl flex items-center justify-between px-3 sm:px-4 py-2.5 transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}>
         <Link to="/" className="flex items-center gap-2.5 group pl-1">
-          <span className="gradient-ring w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm font-display shadow-md group-hover:scale-105 transition-transform">
+          <span className="gradient-ring w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm font-display group-hover:scale-105 transition-transform">
             {initials}
           </span>
           <span className="font-display font-semibold text-neutral-900 hidden sm:block">{profile.name}</span>
@@ -41,32 +39,13 @@ export default function Navbar() {
               <Link
                 key={to}
                 to={to}
-                className={`btn-press flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium ${active ? "bg-neutral-900 text-white shadow-md" : "text-neutral-700 hover:bg-white/70"}`}
+                className={`btn-press flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium ${active ? "bg-neutral-900 text-white" : "text-neutral-700 hover:bg-neutral-100"}`}
               >
                 <Icon size={16} strokeWidth={2.2} />
                 <span className="hidden sm:inline">{label}</span>
               </Link>
             );
           })}
-
-          <span className="w-px h-6 bg-neutral-300/70 mx-1 hidden sm:block" />
-
-          {user ? (
-            <div className="flex items-center gap-2">
-              {user.picture ? (
-                <img src={user.picture} alt={user.name} className="w-8 h-8 rounded-lg object-cover" title={user.name} />
-              ) : (
-                <span className="w-8 h-8 rounded-lg gradient-ring text-white text-xs font-bold flex items-center justify-center">{user.name?.[0]}</span>
-              )}
-              <button onClick={logout} title="Sign out" className="btn-press flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-white/70">
-                <LogOut size={16} /><span className="hidden sm:inline">Sign out</span>
-              </button>
-            </div>
-          ) : (
-            <button onClick={login} className="btn-press gradient-ring flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-semibold text-white shadow-md">
-              <LogIn size={16} /><span className="hidden sm:inline">Sign in</span>
-            </button>
-          )}
         </div>
       </nav>
     </div>
