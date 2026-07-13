@@ -1,21 +1,21 @@
 import React from "react";
-import { education, experience, skills } from "../mock";
-import { GraduationCap, Briefcase, Sparkles } from "lucide-react";
+import { education, experience, skills, profile } from "../mock";
+import { GraduationCap, Briefcase, Sparkles, Download } from "lucide-react";
 
-function EntryCard({ title, subtitle, date, points }) {
+function TimelineItem({ title, subtitle, date, points, last }) {
   return (
-    <div className="bg-white rounded-xl p-5 shadow-sm">
+    <div className="relative pl-8">
+      <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full gradient-ring ring-4 ring-white/60" />
+      {!last && <span className="absolute left-[6px] top-6 bottom-[-1.25rem] w-0.5 bg-neutral-300/70" />}
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-        <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
-        <span className="text-xs uppercase tracking-wide text-neutral-500 shrink-0">
-          {date}
-        </span>
+        <h3 className="font-display text-lg font-semibold text-neutral-900">{title}</h3>
+        <span className="text-xs font-medium text-neutral-500 shrink-0">{date}</span>
       </div>
-      {subtitle && <p className="text-sm text-neutral-600 mt-0.5">{subtitle}</p>}
-      {points && points.length > 0 && (
-        <ul className="list-disc pl-5 mt-3 space-y-1.5 text-sm text-neutral-700">
+      {subtitle && <p className="text-sm font-medium" style={{ color: "#4a86f0" }}>{subtitle}</p>}
+      {points?.length > 0 && (
+        <ul className="mt-2 space-y-1.5 text-sm text-neutral-600">
           {points.map((pt, i) => (
-            <li key={i} className="leading-relaxed">{pt}</li>
+            <li key={i} className="leading-relaxed flex gap-2"><span className="text-neutral-400 mt-1">•</span>{pt}</li>
           ))}
         </ul>
       )}
@@ -23,49 +23,69 @@ function EntryCard({ title, subtitle, date, points }) {
   );
 }
 
-function SectionTitle({ icon: Icon, children }) {
+function SectionHead({ icon: Icon, title }) {
   return (
-    <div className="flex items-center gap-2 mt-12 mb-5">
-      <Icon size={26} className="text-neutral-900" />
-      <h2 className="text-3xl font-semibold text-neutral-900">{children}</h2>
+    <div className="flex items-center gap-2 mb-6">
+      <span className="gradient-ring w-9 h-9 rounded-xl flex items-center justify-center text-white"><Icon size={18} /></span>
+      <h2 className="font-display text-2xl font-bold text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 export default function Resume() {
   return (
-    <div className="fade-in">
-      <SectionTitle icon={GraduationCap}>Education</SectionTitle>
-      <div className="space-y-4">
-        {education.map((e, i) => (
-          <EntryCard key={i} title={e.degree} subtitle={e.school} date={e.date} points={e.points} />
-        ))}
-      </div>
+    <div>
+      <header className="reveal glass rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900">{"R\u00e9sum\u00e9"}</h1>
+          <p className="text-lg text-neutral-600 mt-2 max-w-xl">
+            A snapshot of my background, experience, and the tools I love working with.
+          </p>
+        </div>
+        <button className="btn-press gradient-ring inline-flex items-center gap-2 text-white font-semibold rounded-2xl px-5 py-3 shadow-lg">
+          <Download size={18} /> Download PDF
+        </button>
+      </header>
 
-      <SectionTitle icon={Briefcase}>Work &amp; Volunteer Experience</SectionTitle>
-      <div className="space-y-4">
-        {experience.map((e, i) => (
-          <EntryCard key={i} title={e.role} subtitle={e.org} date={e.date} points={e.points} />
-        ))}
-      </div>
-
-      <SectionTitle icon={Sparkles}>Skills &amp; Knowledge</SectionTitle>
-      <div className="space-y-4">
-        {skills.map((s, i) => (
-          <div key={i} className="bg-white rounded-xl p-5 shadow-sm">
-            <h3 className="text-lg font-semibold text-neutral-900">{s.title}</h3>
-            <p className="text-sm text-neutral-700 mt-2 leading-relaxed">{s.body}</p>
-            {s.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-3">
-                {s.tags.map((t) => (
-                  <span key={t} className="text-xs font-medium bg-neutral-100 text-neutral-700 rounded-md px-2 py-1">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            )}
+      <div className="grid lg:grid-cols-2 gap-6 mt-6">
+        <section className="reveal glass rounded-3xl p-8" style={{ animationDelay: "60ms" }}>
+          <SectionHead icon={Briefcase} title="Experience" />
+          <div className="space-y-6">
+            {experience.map((e, i) => (
+              <TimelineItem key={i} title={e.role} subtitle={e.org} date={e.date} points={e.points} last={i === experience.length - 1} />
+            ))}
           </div>
-        ))}
+        </section>
+
+        <div className="space-y-6">
+          <section className="reveal glass rounded-3xl p-8" style={{ animationDelay: "120ms" }}>
+            <SectionHead icon={GraduationCap} title="Education" />
+            <div className="space-y-6">
+              {education.map((e, i) => (
+                <TimelineItem key={i} title={e.degree} subtitle={e.school} date={e.date} points={e.points} last={i === education.length - 1} />
+              ))}
+            </div>
+          </section>
+
+          <section className="reveal glass rounded-3xl p-8" style={{ animationDelay: "180ms" }}>
+            <SectionHead icon={Sparkles} title="Skills" />
+            <div className="space-y-5">
+              {skills.map((s, i) => (
+                <div key={i}>
+                  <h3 className="font-display font-semibold text-neutral-900">{s.title}</h3>
+                  <p className="text-sm text-neutral-600 mt-1 leading-relaxed">{s.body}</p>
+                  {s.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {s.tags.map((t) => (
+                        <span key={t} className="text-xs font-medium bg-white/70 border border-white/80 text-neutral-700 rounded-lg px-2.5 py-1">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

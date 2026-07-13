@@ -1,35 +1,69 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import ProjectCard from "../components/ProjectCard";
 import { featuredProjects, otherProjects } from "../mock";
+import { Layers } from "lucide-react";
+
+const all = [...featuredProjects, ...otherProjects];
 
 export default function Projects() {
+  const techs = useMemo(() => {
+    const set = new Set();
+    all.forEach((p) => p.tech.forEach((t) => set.add(t)));
+    return ["All", ...Array.from(set).sort()];
+  }, []);
+  const [filter, setFilter] = useState("All");
+
+  const featured = filter === "All" ? featuredProjects : featuredProjects.filter((p) => p.tech.includes(filter));
+  const others = filter === "All" ? otherProjects : otherProjects.filter((p) => p.tech.includes(filter));
+
   return (
-    <div className="fade-in">
-      <h2 className="text-3xl font-semibold text-neutral-900">Featured Projects</h2>
-      <p className="text-neutral-700 mt-2 leading-relaxed">
-        Here are a few of the projects I'm most actively working on, and/or are
-        most proud of. In the past, I've made a <em>lot</em> more things, which
-        I've included down below under "Other Projects".
-      </p>
+    <div>
+      <header className="reveal">
+        <p className="flex items-center gap-2 text-sm font-medium gradient-text"><Layers size={16} /> Portfolio</p>
+        <h1 className="font-display text-4xl sm:text-5xl font-bold text-neutral-900 mt-1">Things I've built</h1>
+        <p className="text-lg text-neutral-600 mt-3 max-w-2xl">
+          A mix of product work, developer tools, and playful experiments. Filter by the tech you're curious about.
+        </p>
+      </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-        {featuredProjects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+      {/* filter chips */}
+      <div className="reveal flex flex-wrap gap-2 mt-8" style={{ animationDelay: "80ms" }}>
+        {techs.map((t) => (
+          <button
+            key={t}
+            onClick={() => setFilter(t)}
+            className={`btn-press text-sm font-medium rounded-full px-4 py-1.5 border ${
+              filter === t
+                ? "bg-neutral-900 text-white border-neutral-900 shadow-md"
+                : "glass text-neutral-700 border-white/70 hover:bg-white/80"
+            }`}
+          >
+            {t}
+          </button>
         ))}
       </div>
 
-      <h2 className="text-3xl font-semibold text-neutral-900 mt-14">Other Projects</h2>
-      <p className="text-neutral-700 mt-2 leading-relaxed">
-        Here are more projects I've worked on over the years. I don't consider
-        them milestones as much as what I've listed above, but I'm still proud of
-        them!
-      </p>
+      {featured.length > 0 && (
+        <>
+          <h2 className="font-display text-2xl font-bold text-neutral-900 mt-10 mb-5">Featured</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featured.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
+          </div>
+        </>
+      )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-        {otherProjects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
+      {others.length > 0 && (
+        <>
+          <h2 className="font-display text-2xl font-bold text-neutral-900 mt-14 mb-5">More projects</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {others.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
+          </div>
+        </>
+      )}
+
+      {featured.length === 0 && others.length === 0 && (
+        <p className="text-neutral-500 mt-12 text-center">No projects with that tech yet.</p>
+      )}
     </div>
   );
 }
