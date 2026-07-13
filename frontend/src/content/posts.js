@@ -9,7 +9,7 @@ export const posts = [
     tag: "Gamedev",
     color: "#478cbf",
     readTime: "5 min",
-    date: "2025-09-05",
+    date: "13-07-2026",
     body: `## From Scratch to a real engine
 
 I've been coding since I was 9. It started with **Scratch** back in 2019 \u2014 dragging blocks around and being amazed that I could make things move. I grew up around computers, so I tend to pick things up quickly, and from there I got into **web development** in 2020, learning HTML, CSS and JavaScript. Eventually I became comfortable building full-stack projects with React, MongoDB and MySQL.

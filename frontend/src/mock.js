@@ -49,20 +49,10 @@ export const socials = [
     handle: "@grenator",
     subtitle: null,
     platform: "on Bluesky",
-    description: "I post about what I'm learning and building along the way.",
+    description: "I post about what I'm learning and whatever intreresting I see that week.",
     url: "https://bsky.app/profile/grenator.bsky.social",
     color: "#4a86f0",
     icon: "bluesky",
-  },
-  {
-    id: "youtube",
-    handle: "@grenator",
-    subtitle: null,
-    platform: "on YouTube",
-    description: "The occasional clip of my projects and game dev experiments.",
-    url: "https://www.youtube.com/@grenator",
-    color: "#cc0000",
-    icon: "youtube",
   },
 ];
 
@@ -76,7 +66,7 @@ export const featuredProjects = [
     tech: ["Godot", "GDScript"],
     logo: GODOT_LOGO,
     description:
-      "My first real dive into Godot \u2014 I followed the full Brackeys Godot tutorial to learn the engine from the ground up: scenes, nodes, GDScript, and building a small 2D game. It's the start of my game dev journey!",
+      "My first real dive into Godot \u2014 I followed Brackey's Godot tutorial to learn the engine from the ground up: scenes, nodes, GDScript, and building a small 2D game. It's the start of my game dev journey!",
     color: godot,
     links: [
       { label: "GitHub", url: "https://github.com/grenator/Completed-Brackeys-Godot-Tutorial" },
@@ -90,26 +80,26 @@ export const education = [
   {
     degree: "Junior Certificate",
     school: "Secondary school, Ireland",
-    date: "June 2025",
+    date: "June 2026",
     points: [
       "Completed my Junior Cert exams in June",
-      "Results expected in October 2025",
+      "Results expected in October 2026",
     ],
   },
   {
     degree: "Cisco Networking Course & Exam",
     school: "Cisco Networking Academy",
-    date: "Completed",
+    date: "2023",
     points: [
       "Learnt the basics of computer hardware and software",
       "Passed the course exam",
     ],
   },
   {
-    degree: "Computer Science \u2014 Summer School",
+    degree: "Computer Science \u2014 Summer School exams",
     school: "Assessment",
     date: "",
-    points: ["Scored 100% in my Computer Science assessments"],
+    points: ["Scored 100% in my Computer Science assessments 3 years in a row"],
   },
   {
     degree: "Self-taught Developer",
@@ -128,7 +118,7 @@ export const experience = [
   {
     role: "Discovered Godot & game dev",
     org: "Self-taught",
-    date: "2025 \u2014 present",
+    date: "2026 \u2014 present",
     points: [
       "Started learning Godot this year, my first proper game engine",
       "Completed the Brackeys Godot tutorial and building small 2D games",
